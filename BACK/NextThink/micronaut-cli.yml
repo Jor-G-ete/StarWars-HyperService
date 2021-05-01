@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: com.NextThink
+testFramework: junit
+sourceLanguage: java
+buildTool: gradle
+features: [annotation-api, app-name, config-kubernetes, gradle, http-client, http-session, java, java-application, jib, junit, kubernetes, logback, management, netty-server, openapi, readme, shade, yaml]

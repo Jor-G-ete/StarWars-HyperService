@@ -1,0 +1,25 @@
+version: '3'
+services:
+  web-app:
+    container_name: starwars-web-app
+    build:
+      context: ./FRONT
+      dockerfile: Dockerfile.webapp
+    ports: 
+      - "4000:3000"
+      # for scaling purpouses we can establish the following ports: - 5000-6000:3000
+    networks:
+      - starwars-hypernetwork
+  microservice:
+    container_name: starwars-microservice
+    build:
+      context: ./BACK
+      dockerfile: Dockerfile.microservice
+    ports: 
+      - "4001:3001"
+    networks:
+      - starwars-hypernetwork
+networks:
+    starwars-hypernetwork:
+        driver: bridge
+

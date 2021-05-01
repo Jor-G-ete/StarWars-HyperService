@@ -1,0 +1,14 @@
+micronaut:
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/**
+  session:
+    http:
+      cookie: true
+      header: true
+  application:
+    name: StarWarsMicroService
+  server:
+    port: 3001

@@ -1,0 +1,16 @@
+# Version of Java
+FROM amazoncorretto:11
+
+# hold the app directory
+WORKDIR /usr/src/app
+
+# copy & build 
+COPY ./NextThink ./
+
+# create the Jar
+RUN ./gradlew assemble
+
+# Expose the port
+EXPOSE 3001
+
+CMD ["java" , "-jar", "./build/libs/NextThink-0.1-all.jar"]

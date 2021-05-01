@@ -1,0 +1,17 @@
+# latest version of node 
+FROM node:14
+
+# hold the app directory
+WORKDIR /usr/src/app
+
+# copy & run 
+COPY ./swa/package*.json ./
+RUN npm install
+
+# copy the project
+COPY ./swa .
+
+# Expose the port
+EXPOSE 3000
+
+CMD ["npm" , "start"]

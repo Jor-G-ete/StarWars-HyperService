@@ -1,0 +1,8 @@
+rootProject.name="NextThink"
+
+sourceControl {
+    /*gitRepository("https://github.com/maartendekker1998/StarWarsAPI.git"){
+        producesModule("org.swapi:StarWarsAPI")
+    }*/
+
+}
