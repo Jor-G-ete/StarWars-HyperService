@@ -6,7 +6,7 @@ services:
       context: ./FRONT
       dockerfile: Dockerfile.webapp
     ports: 
-      - "4000:3000"
+      - "3000:3000"
       # for scaling purpouses we can establish the following ports: - 5000-6000:3000
     networks:
       - starwars-hypernetwork
@@ -16,7 +16,7 @@ services:
       context: ./BACK
       dockerfile: Dockerfile.microservice
     ports: 
-      - "4001:3001"
+      - "3001:3001"
     networks:
       - starwars-hypernetwork
 networks:

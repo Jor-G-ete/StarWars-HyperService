@@ -36,8 +36,7 @@ module.exports = {
      */
     getPlanetInhabitants(planet_name, table_id){
         // declare the url
-        //let url = "http://localhost:3001/sw-search/planet-name/";
-        let url = "http://localhost:4001/sw-search/planet-name/";
+        let url = "http://localhost:3001/sw-search/planet-name/";
         // get the data
         return this.apiGET(url+String(planet_name));
     },
@@ -48,8 +47,7 @@ module.exports = {
      */
     getCharacterStarship(char_name){
         // declare the url
-        //let url = "http://localhost:3001/sw-search/character-name/";
-        let url = "http://localhost:4001/sw-search/character-name/";
+        let url = "http://localhost:3001/sw-search/character-name/";
         // get the data
         return this.apiGET(url+String(char_name));
     },

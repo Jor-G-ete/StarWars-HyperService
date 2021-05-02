@@ -12,9 +12,6 @@ import API from './assets/js/api'
 import React from 'react'
 
 export default class App extends React.Component {
-  //Props are values that are sended via tag attributes Father => Child (App => TableShirps) Line 41
-  //state values are automaticaly refreshed in view when updated using setState  
-  //Send data to <TableShirp Props={State.data}> using state variable => update state variable => GG
   constructor(props){
     super(props);
     // create variables of the component
@@ -74,7 +71,7 @@ export default class App extends React.Component {
     Promise.all([character_response, planet_response]).then((data) =>{
       // check the responses, in case of not found show it.
       // character response
-      if(character_response.length != 0){
+      if(character_response.length !== 0){
         if("statusCode" in data[0][0]){
           this.setState({
               message_character: (data[0][0].msg === 1) ? "No characters were found" : "No spaceships were found",
@@ -84,7 +81,7 @@ export default class App extends React.Component {
         }else this.setState({starship_data:data[0]});
       }
       // planet response
-      if(planet_response.length != 0){
+      if(planet_response.length !== 0){
         if("statusCode" in data[1][0]){
           this.setState({
               message_planet: (data[1][0].msg === 1) ? "Exist the planet does not. Try another. Hrmmm." : "Contain habitants the planet does not..",
@@ -109,10 +106,10 @@ export default class App extends React.Component {
     let tableplanet;
     // character if
     if(this.state.starship_data.length > 0) tablecharacter = <TableStarShipsCmp data={this.state.starship_data}/>;
-    else tablecharacter = <div><h2>{this.state.message_character}</h2> <img src={NotFound} className="" alta="NotFound"/></div>;
+    else tablecharacter = <div><h2>{this.state.message_character}</h2> <img src={NotFound} className="" alt="NotFound"/></div>;
     // planet if
     if(this.state.inhabitants_data.length > 0) tableplanet = <TablePlanetInhabitantsCmp data={this.state.inhabitants_data}/>;
-    else tableplanet = <div><h2>{this.state.message_planet}</h2> <img src={NotFound2} className="" alta="NotFound2"/></div>;
+    else tableplanet = <div><h2>{this.state.message_planet}</h2> <img src={NotFound2} className="" alt="NotFound2"/></div>;
     // return the html
     return (
       <div className="App">
@@ -165,11 +162,30 @@ export default class App extends React.Component {
             id="tables"  
             hidden
             block 
-            style={{
-
-            }}>
-              {tablecharacter}
-              {tableplanet}
+            style={{width: "100%"}}
+           >
+             <div 
+                style={{
+                  display:"flex",
+                  alignItems:"center",
+                  justifyContent : "center",
+                }}
+              >
+                <div style={{width: "80%"}}>
+                  {tablecharacter}
+                </div>
+              </div>
+             <div 
+                style={{
+                  display:"flex",
+                  alignItems:"center",
+                  justifyContent : "center",
+                }}
+              >
+                <div style={{width: "80%"}}>
+                  {tableplanet}
+                </div>
+              </div>
           </div>
           <a
             className="App-link"
