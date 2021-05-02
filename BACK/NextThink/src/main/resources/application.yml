@@ -11,4 +11,6 @@ micronaut:
   application:
     name: StarWarsMicroService
   server:
+    cors:
+      enabled: true
     port: 3001

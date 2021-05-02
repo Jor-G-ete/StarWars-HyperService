@@ -8,6 +8,7 @@ import { AccountCircle } from '@material-ui/icons';
 import { TextField } from '@material-ui/core';
 import '@material-ui/core';
 import '@material-ui/icons';
+import API from './assets/js/api'
 
 import React from 'react'
 
@@ -103,7 +104,7 @@ componentDidMount(){
                   ),
                 }}
                 />
-              <Button variant="contained" onClick={()=> this.search()}>Search</Button>
+              <Button variant="contained" onClick={this.search('',"naboo")}>Search</Button>
           </form>
         </div>
         <div id="tables" >
@@ -125,9 +126,22 @@ componentDidMount(){
       </header>
     </div>
   )};
-  search(){
-  //TODO: Add apiGET reference and prepare response
-  //updateTable(data  )
+  search(character, planet){
+    // apiGET reference and prepare response
+    // log and declare values
+    console.log(character);
+    console.log(planet);
+    let character_response = [];
+    let planet_response = [];
+    // call the methods to request the data
+    if(character !== '') character_response =  API.getCharacterStarship(character, '');
+    if(planet !== '') planet_response =  API.getPlanetInhabitants(planet, '');
+    // set the data
+    this.setState({starship_data:character_response});
+    this.setState({inhabitants_data:planet_response});
+    
+    // alternative method
+    //updateTable(data  )
     console.log("my search logic")
   }
   updateTable(data){

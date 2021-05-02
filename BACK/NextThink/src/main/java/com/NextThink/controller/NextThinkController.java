@@ -18,7 +18,7 @@ public class NextThinkController {
 
     // declare main variables
     private final String url_people = "https://swapi.dev/api/people/?search=";
-    private final String url_planet = "https://swapi.dev/api/people/?search=";
+    private final String url_planet = "https://swapi.dev/api/planets/?search=";
     public final String wookie_format = "format=wookiee";
     private final HttpClient httpClient = HttpClient.newBuilder().version(HttpClient.Version.HTTP_2).build();
 
@@ -60,16 +60,24 @@ public class NextThinkController {
         if(response.size() == 0) {
             HashMap<String, Integer> hm = new HashMap<String, Integer>();
             hm.put("statusCode", 404);
+            hm.put("msg", 1);
             array_of_responses.add(hm);
         } else {
             // cast it to an array list
             ArrayList response_list = (ArrayList) response.get(key);
-            // loop over starships
-            for (Object i : response_list) {
-                // query again to find out the value
-                array_of_responses.add(retrieve_single_response(((String) i), false, true));
-                // print the response
-                System.out.println((String) i);
+            if(response_list.size() == 0){
+                HashMap<String, Integer> hm = new HashMap<String, Integer>();
+                hm.put("statusCode", 404);
+                hm.put("msg", 2);
+                array_of_responses.add(hm);
+            }else {
+                // loop over starships
+                for (Object i : response_list) {
+                    // query again to find out the value
+                    array_of_responses.add(retrieve_single_response(((String) i), false, true));
+                    // print the response
+                    System.out.println((String) i);
+                }
             }
         }
         // create the json
@@ -88,7 +96,7 @@ public class NextThinkController {
 
     @Get("/planet-name/{swPlanetName}")
     public String retrieve_inhabitants(String swPlanetName) throws IOException, InterruptedException{
-        return retrieve_response(url_planet+swPlanetName, "spaceships");
+        return retrieve_response(url_planet+swPlanetName, "residents");
 
     }
 }
