@@ -10,6 +10,42 @@ export default class starship_table_cpm extends React.Component{
         }
         this.columns = [
             {
+                title: "Name",
+                field: "name",
+            },
+            {
+                title: "Model",
+                field: "model",
+            },
+            {
+                title: "Manufacturer",
+                field: "manufacturer",
+            },
+            {
+                title: "Starship class",
+                field: "starship_class",
+            },
+            {
+                title: "Length",
+                field: "length",
+            },
+            {
+                title: "Crew",
+                field: "Crew",
+            },
+            {
+                title: "Passengers",
+                field: "passengers",
+            },
+            {
+                title: "Hyperdrive rating",
+                field: "hyperdrive_rating",
+            },
+            {
+                title: "Max atmosphering speed",
+                field: "max_atmosphering_speed",
+            },
+            {
                 title: "MGLT",
                 field: "MGLT",
             },
@@ -30,44 +66,8 @@ export default class starship_table_cpm extends React.Component{
                 field: "created",
             },
             {
-                title: "Crew",
-                field: "Crew",
-            },
-            {
                 title: "Edited",
                 field: "edited",
-            },
-            {
-                title: "Hyperdrive rating",
-                field: "hyperdrive_rating",
-            },
-            {
-                title: "Length",
-                field: "length",
-            },
-            {
-                title: "Manufacturer",
-                field: "manufacturer",
-            },
-            {
-                title: "Max atmosphering speed",
-                field: "max_atmosphering_speed",
-            },
-            {
-                title: "Model",
-                field: "model",
-            },
-            {
-                title: "Name",
-                field: "name",
-            },
-            {
-                title: "Passengers",
-                field: "passengers",
-            },
-            {
-                title: "Starship class",
-                field: "starship_class",
             }
         ];
 

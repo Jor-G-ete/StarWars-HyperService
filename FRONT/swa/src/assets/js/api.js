@@ -35,43 +35,20 @@ module.exports = {
      * @returns {Array} Array containing in a dict format the response 
      */
     getPlanetInhabitants(planet_name, table_id){
-        
         // declare the url
         let url = "http://localhost:3001/sw-search/planet-name/";
         // get the data
         return this.apiGET(url+String(planet_name));
-
-        /*
-        // generate a promise
-        Promise.all([data_promised]).then((data) =>{
-            // analize the response
-            let response = data[0];
-            console.log(response);
-            console.log("statusCode" in response[0]);
-            // extract the response and check the status code
-            if("statusCode" in response[0] && response[0].statusCode !== 200) {
-                return
-            }
-            
-        })*/
-
     },
     /**
      * @summary Get the spaceshipts that have belong a character.
      * @param {String} char_name Name of the character
      * @returns {Array} Array containing in a dict format the response 
      */
-    getCharacterStarship(char_name, table_id){
-        
+    getCharacterStarship(char_name){
         // declare the url
         let url = "http://localhost:3001/sw-search/character-name/";
         // get the data
         return this.apiGET(url+String(char_name));
-        /*
-        // generate a promise
-        Promise.all([data_promised]).then((data) =>{
-            // create the new element
-            table_id.data = data[0];
-        })*/
     },
 }
