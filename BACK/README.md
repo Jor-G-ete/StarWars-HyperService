@@ -33,11 +33,11 @@ Then, Like the Avengers said we will start with: ​​
 
 This command we will create a package called **Build**. Which will contain the data, executables, info and resource of our microservice. The result of the command should something like this:
 
-![res1](.\images\res1.png)
+![res1](./images/res1.png)
 
 Once this step is complete, in the following path (*BACK/NextThink/build/libs/*)  we should see the new items described above:
 
-![res2](.\images\res2.png)
+![res2](./images/res2.png)
 
 In concrete the item which most interest us is : **NextThink-0.1-all.jar**. This file is our executable and with the following command we will be able to execute it:
 
@@ -46,7 +46,7 @@ java -jar ./build/libs/NextThink-0.1-all.jar
 ```
 
 That will create the following output:
-![res3](.\images\res3.png)
+![res3](./images/res3.png)
 
 With that our service will be up and running in the port 3001. 
 
@@ -66,7 +66,7 @@ YES! This package is provided along with a Dockerfile which builds an image. To 
 docker build -t NameOfTheImage . -f Dockerfile.microservice
 ```
 
-![res6](.\images\res6.png)
+![res6](./images/res6.png)
 
 Then with the following command we run it:
 
@@ -74,7 +74,7 @@ Then with the following command we run it:
 docker run -dp 3001:3001 starwars-hyperservice_microservice
 ```
 
-![res4](.\images\res4.png)
+![res4](./images/res4.png)
 
 If we want to stop it, it's as simple as checking the name of the container and stopping it
 
@@ -83,7 +83,7 @@ docker ps
 docker stop ContainerID
 ```
 
-![res5](.\images\res5.png)
+![res5](./images/res5.png)
 
 ## Future projects
 

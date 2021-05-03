@@ -21,10 +21,10 @@ npm install
 ```
 
 This command we will create a package called **node modules**. Which will allow us to execute the webapp: 
-![res1](.\images\res1.png)
+![res1](./images/res1.png)
 
 At the end you will find the following lines:
-![res2](.\images\res2.png)
+![res2](./images/res2.png)
 
 Once this step is done, we will be able to execute the webapp like this:
 
@@ -32,10 +32,10 @@ Once this step is done, we will be able to execute the webapp like this:
 npm start
 ```
 
-![res3](.\images\res3.png)
+![res3](./images/res3.png)
 
 Finally we will see how the webapp is built and ready to be used:
-![res4](.\images\res4.png)
+![res4](./images/res4.png)
 
 With that our service will be up and running in the port 3000. 
 
@@ -44,40 +44,41 @@ With that our service will be up and running in the port 3000.
 These are the states that can be found in the web page: 
 
 **Waiting for you to introduce something:**
-![res5](.\images\res5.png)
+![res5](./images/res5.png)
 
 **Write the fields in blank:**
-![res6](.\images\res6.png)
+![res6](./images/res6.png)
 
 **Request a name:**	
 
 * Success:
 
-  ![res7](.\images\res7.png)
+  ![res7](./images/res7.png)
 
 * Success but nothing to display:
-  ![res10](.\images\res10.png)
+  ![res10](./images/res10.png)
 
 * Fail:
-  ![res8](.\images\res8.png)
+  ![res8](./images/res8.png)
 
 Request the inhabitants:	
 
 * Success but nothing to display:
-  ![res11](.\images\res11.png)
+  ![res11](./images/res11.png)
 
 * Success:
-  ![res9](.\images\res9.png)
+  ![res9](./images/res9.png)
 
 * Fail:
-  ![res10](.\images\res10.png)
+  ![res10](./images/res10.png)
 
 ### Notes
 
 The terminal after launching the webapp will be render useless, unless you use commands like screen or put the task in the background. That's your choice.
 
-Besides you will an amazing link that will direct you to my Github :wink:![res16](.\images\res16.png)
-![res17](.\images\res17.png)
+Besides you will an amazing link that will direct you to my Github :wink:
+![res16](./images/res16.png)
+![res17](./images/res17.png)
 
 ## How can  I stop the service ?
 
@@ -91,7 +92,7 @@ YES! This package is provided along with a Dockerfile which builds an image. To 
 docker build -t NameOfTheImage . -f Dockerfile.webapp
 ```
 
-![res13](.\images\res13.png)
+![res13](./images/res13.png)
 
 Then with the following command we run it:
 
@@ -99,7 +100,7 @@ Then with the following command we run it:
 docker run -dp 3000:3000 starwars-hyperservice_web-app
 ```
 
-![res14](.\images\res14.png)
+![res14](./images/res14.png)
 
 If we want to stop it, it's as simple as checking the name of the container and stopping it
 
@@ -108,7 +109,7 @@ docker ps
 docker stop ContainerID
 ```
 
-![res15](.\images\res15.png)
+![res15](./images/res15.png)
 
 ## Future projects
 
