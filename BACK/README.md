@@ -1,70 +1,101 @@
-# Getting Started with Create React App
+# Back-end Microservice
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Here we got a backend microservice done in Java 11​, with Gradle :elephant: and Micronaut :telescope::milky_way: which allows the users to query and extract data from the star wars archives. 
 
-## Available Scripts
+As an extra feature is **dockerized**, check the section down below to know more about this.
 
-In the project directory, you can run:
+## How many services and its purposes
 
-### `npm start`
+In the mircoservice, we will only find just one service **NextThinkController** and one testing class **NextThinkTest**.
+**NextThinkController**: It will create two **GET** endpoints, under the path and port: *localhost:3001/sw-search/*:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* character-name: Retrieves the spaceships that a character has used.
+* planet-name: Retrieves the inhabitants of a given plane. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Both endpoints return a json inside a string to be used. The endpoint uses the following app to obtain the data: https://swapi.dev/
 
-### `npm test`
+**NextThinkTest**: It will create one test in which we will test the output of our microservice. The test consist in 4 request:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Request a character which exist. Luke
+2. Request a character which doesn't exist in Star Wars: Jorge
+3. Request a planet which exist in Star wars: Naboo
+4. Request a planet which doesn't exist in Star wars: Earth.
 
-### `npm run build`
+## How to execute it?
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To execute this bad-boy we will only need two easy commands. Before executing them please move under the folder *Back*.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Then, Like the Avengers said we will start with: ​​
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+./gradlew assemble
+```
 
-### `npm run eject`
+This command we will create a package called **Build**. Which will contain the data, executables, info and resource of our microservice. The result of the command should something like this:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![res1](.\images\res1.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Once this step is complete, in the following path (*BACK/NextThink/build/libs/*)  we should see the new items described above:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![res2](.\images\res2.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+In concrete the item which most interest us is : **NextThink-0.1-all.jar**. This file is our executable and with the following command we will be able to execute it:
 
-## Learn More
+```bash
+java -jar ./build/libs/NextThink-0.1-all.jar
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+That will create the following output:
+![res3](.\images\res3.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+With that our service will be up and running in the port 3001. 
 
-### Code Splitting
+### Notes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The terminal after launching the microservice will be render useless, unless you use commands like screen or put the task in the background. That's your choice.
 
-### Analyzing the Bundle Size
+## How can  I stop the service ?
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Simply use the fantastic **Ctrl + C**.
 
-### Making a Progressive Web App
+## is It dockerized?
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+YES! This package is provided along with a Dockerfile which builds an image. To build it and execute it, use the following commands:
 
-### Advanced Configuration
+```bash
+docker build -t NameOfTheImage . -f Dockerfile.microservice
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![res6](.\images\res6.png)
 
-### Deployment
+Then with the following command we run it:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+docker run -dp 3001:3001 starwars-hyperservice_microservice
+```
 
-### `npm run build` fails to minify
+![res4](.\images\res4.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If we want to stop it, it's as simple as checking the name of the container and stopping it
+
+```bash
+docker ps
+docker stop ContainerID
+```
+
+![res5](.\images\res5.png)
+
+## Future projects
+
+### Wookiee support
+
+The very first improvement of this project would be to give support to every one, and for that it's mandatory to include the format Wookie in this microservice. As simple as adding *&format=wookiee* we would improve the microservice and the data returned by him.
+Try: *https://swapi.dev/api/planets/1/?format=wookiee*
+
+### Improve unit test
+
+Unit test can be improved a lot
+
+### Add /info/ endpoint
+
+Add more endpoints to display basic info of the api. It's true that the swagger is provided but sometimes is easier provide /info/ endpoints.

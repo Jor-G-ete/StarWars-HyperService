@@ -1,70 +1,128 @@
-# Getting Started with Create React App
+# Front-end Web-app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Here we got a front end web app done in ReactJS which allows the users to ask for star wars data. In concrete the spaceships that has belong to a character and the inhabitants of a planet. 
 
-## Available Scripts
+As an extra feature is **dockerized**, check the section down below to know more about this.
 
-In the project directory, you can run:
+## Which components will found here?
 
-### `npm start`
+You will find one component Material UI Table which generate two components. Each component has a different variable called columns which contains the headers that are displayed in the table.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This component is super smart and mimics the way of vuetify components. That will allow us to pass a json to the table without regarding <ttables>, or <tbody> or anything else. Just if like the table was a mere variable.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## How to execute it?
 
-### `npm test`
+To execute this bad-boy we will only need two easy commands. Before executing them please move under the folder *FRONT/swa/*. It's required to have installed npm. Node.js (https://nodejs.org/en/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+We will start installing all the node modules required for this web-app to work: 
 
-### `npm run build`
+```bash
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This command we will create a package called **node modules**. Which will allow us to execute the webapp: 
+![res1](.\images\res1.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+At the end you will find the following lines:
+![res2](.\images\res2.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Once this step is done, we will be able to execute the webapp like this:
 
-### `npm run eject`
+```bash
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![res3](.\images\res3.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Finally we will see how the webapp is built and ready to be used:
+![res4](.\images\res4.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+With that our service will be up and running in the port 3000. 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Possible states 
 
-## Learn More
+These are the states that can be found in the web page: 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Waiting for you to introduce something:**
+![res5](.\images\res5.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Write the fields in blank:**
+![res6](.\images\res6.png)
 
-### Code Splitting
+**Request a name:**	
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* Success:
 
-### Analyzing the Bundle Size
+  ![res7](.\images\res7.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* Success but nothing to display:
+  ![res10](.\images\res10.png)
 
-### Making a Progressive Web App
+* Fail:
+  ![res8](.\images\res8.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Request the inhabitants:	
 
-### Advanced Configuration
+* Success but nothing to display:
+  ![res11](.\images\res11.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+* Success:
+  ![res9](.\images\res9.png)
 
-### Deployment
+* Fail:
+  ![res10](.\images\res10.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Notes
 
-### `npm run build` fails to minify
+The terminal after launching the webapp will be render useless, unless you use commands like screen or put the task in the background. That's your choice.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Besides you will an amazing link that will direct you to my Github :wink:![res16](.\images\res16.png)
+![res17](.\images\res17.png)
+
+## How can  I stop the service ?
+
+Simply use the fantastic **Ctrl + C**.
+
+## is It dockerized?
+
+YES! This package is provided along with a Dockerfile which builds an image. To build it and execute it, use the following commands:
+
+```bash
+docker build -t NameOfTheImage . -f Dockerfile.webapp
+```
+
+![res13](.\images\res13.png)
+
+Then with the following command we run it:
+
+```bash
+docker run -dp 3000:3000 starwars-hyperservice_web-app
+```
+
+![res14](.\images\res14.png)
+
+If we want to stop it, it's as simple as checking the name of the container and stopping it
+
+```bash
+docker ps
+docker stop ContainerID
+```
+
+![res15](.\images\res15.png)
+
+## Future projects
+
+### Wookiee support
+
+The very first improvement of this project would be to give support to every one, and for that it's mandatory to include the format Wookie in this webApp. As simple as adding a check box in the webpage. If checked it will add the following to the url : *&format=wookiee*.
+Try: *https://swapi.dev/api/planets/1/?format=wookiee*
+
+### Improve unit test
+
+Unit test can be improved a lot
+
+### Add more interactive components
+
+### Move to VueJs and Vuetify. 
+
+Check it out!
