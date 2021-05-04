@@ -1,0 +1,10 @@
+stages:
+  - test
+
+test-master:
+  stage: test
+  only:
+    refs:
+      - master
+  script:
+    - TESTS/unit-test.sh 

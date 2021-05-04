@@ -1,0 +1,51 @@
+#------- SERVICE FOR CALLING OTHER MICROSERVICE VIA HHTP---- 
+kind: Service
+apiVersion: v1
+metadata:
+  name: starwars-hyperservice-microservice
+  namespace: front
+spec:
+  type: ExternalName
+  externalName: starwars-hyperservice-microservice.back.svc.cluster.local
+  ports:
+  - port: 3001
+---
+#----------------------------------------------------------
+apiVersion: v1
+kind: Service
+metadata:
+  name: starwars-hyperservice-web-app 
+  namespace: front
+spec:
+  ports:
+  - name: http
+    protocol: TCP
+    port: 3000
+  selector:
+    microService: starwars-hyperservice-web-app 
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: starwars-hyperservice-web-app 
+  namespace: front
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      microService: starwars-hyperservice-web-app 
+  template:
+    metadata:
+      labels:
+        microService: starwars-hyperservice-web-app 
+        version: v1.0.0
+    spec:
+      containers:
+      - name: starwars-hyperservice-web-app
+        image: frankieem/starwars-hyperservice:latest-FRONT
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+          #-----------------------------------------------

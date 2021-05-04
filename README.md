@@ -69,7 +69,52 @@ Easy peachy: Just use **Ctrl + C** . Here it's an image of the expected output:
 
 No prob! Inside each folder ( **FRONT** and **BACK** ) you will find a Readme explaining in deep how the services work in stand-alone and how can be invoked separately
 
+## Can I move it to Kubernetes?
 
+Of course! In the folder ***KUBE*** there are two files (*kube-cluster-FRONT.yml* and *kube-cluster-BACK.yml*) which allows you to run this whole application in a Kubernetes cluster, for those who doesn't know who to do it, these are the steps to follow:
+
+1. Have Kubernetes activated in your docker desktop.
+
+2. Create the namespaces back and front: 
+
+   ```bash
+   kubectl create namespace front && kubctl namespace back
+   ```
+
+   ![kube1](./image/kube1.png)
+
+3. Then create the pods:
+
+   ```bash
+   kubectl apply -f ./KUBE/kube-cluster-BACK.yml -n back
+   kubectl apply -f ./KUBE/kube-cluster-FRONT.yml -n front
+   ```
+
+   ![kube2](./image/kube2.png)
+
+   ![kube3](./image/kube3.png)
+
+4. When they are created, we can check if they are ready and their names with the following command:
+
+   ```bash
+   kubectl get pods -n front
+   kubectl get pods -n back
+   ```
+
+![kube4](./image/kube4.png)
+
+5. Finally we can check the logs of the pods with the following command:
+
+   ```bash
+   kubectl logs BackEndPodName -n back
+   kubectl logs FrontEndPodName -n front
+   ```
+
+   ![kube6](./image/kube6.png)
+
+   It's deployed and running!! YAAAAAS!!! :happy:
+
+   ![vader](./image/vader.gif)
 
 ## Things which can be improved
 
