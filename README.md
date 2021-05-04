@@ -59,7 +59,7 @@ Now it's the fun part, play as much as you want :wink: :heart:
 
 ![minivader](./image/minivader.gif)
 
-Easy peachy: Just use **Ctrl + C** . Here it's an image of the expected output:
+Easy peachy: Just use **Ctrl + C**  or **docker-compose down**. Here it's an image of the expected output:
 
 ![res3](./image/res3.png)
 
